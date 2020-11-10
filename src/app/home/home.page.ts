@@ -19,7 +19,7 @@ export class HomePage {
         zoom:'no',
 
       }
-    const browser = this.iab.create('https://mybrowser-search.com/search?q=inapp%20capacitor&ac=1468047342',"_self",ab);
+    const browser = this.iab.create('https://www.k2.com.pk/',"_self",ab);
     browser.show();
 
   }
