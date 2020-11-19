@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
-import { DomSanitizer } from '@angular/platform-browser';
-
 import { Platform } from '@ionic/angular';
-import { on } from 'process';
 
 @Component({
   selector: 'app-home',
