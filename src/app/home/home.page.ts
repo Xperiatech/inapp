@@ -33,9 +33,8 @@ export class HomePage {
         footer:'no',
         location:'no',
         zoom:'no',
-
       }
-    const browser = this.iab.create('https://www.k2.com.pk/',"_self",ab);
+    const browser = this.iab.create('https://selectyc.com/',"_self",ab);
     browser.show();
     browser.on('exit').subscribe(()=>{
       navigator['app'].exitApp();
