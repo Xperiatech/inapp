@@ -18,13 +18,11 @@ export class HomePage {
 
   }
 
-
   helpUrl= "https://www.google.com";
    url = this.helpUrl.replace("watch?v=", "v/");
 
   constructor(private iab: InAppBrowser,
-    private platform: Platform,
-    private sanitizer: DomSanitizer) {
+    private platform: Platform,) {
       this.platform.backButton.subscribeWithPriority(9999,()=>{
         navigator['app'].exitApp();
       })
