@@ -29,7 +29,7 @@ export class HomePage {
         location:'no',
         zoom:'no',
       }
-    const browser = this.iab.create('https://selectyc.com/',"_self",ab);
+    const browser = this.iab.create('https://thepetproject.in/',"_self",ab);
     browser.show();
     browser.on('exit').subscribe(()=>{
       navigator['app'].exitApp();
