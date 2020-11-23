@@ -20,19 +20,6 @@ export class HomePage {
 
   constructor(private iab: InAppBrowser,
     private platform: Platform,) {
-      this.platform.backButton.subscribeWithPriority(9999,()=>{
-        navigator['app'].exitApp();
-      })
-   let ab:InAppBrowserOptions;
-   ab = {
-        footer:'no',
-        location:'no',
-        zoom:'no',
-      }
-    const browser = this.iab.create('https://thepetproject.in/',"_self",ab);
-    browser.show();
-    browser.on('exit').subscribe(()=>{
-      navigator['app'].exitApp();
-    })
+
   }
 }
