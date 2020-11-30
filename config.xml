@@ -1,16 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<<<<<<< HEAD
-<widget id="io.AgeSoft.langlabtexas.com" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Langlabtexas</name>
-    <description />
-    <author email="lafmk22@gmail.com" href="http://ionicframework.com/">Altabahi</author>
-=======
-
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ThePetProject</name>
+<widget id="com.altabahi.eplaza.ab" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>ePlaza</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
->>>>>>> JGS
     <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="*" />
