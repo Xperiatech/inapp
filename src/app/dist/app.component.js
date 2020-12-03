@@ -94,6 +94,7 @@ var AppComponent = /** @class */ (function () {
             _this.platform.backButton.subscribeWithPriority(9999, function () {
                 navigator['app'].exitApp();
             });
+            _this.showView();
         });
     };
     AppComponent.prototype.showView = function () {
@@ -103,7 +104,7 @@ var AppComponent = /** @class */ (function () {
             location: 'no',
             zoom: 'no'
         };
-        var browser = this.iab.create('https://eplaza.ps/', "_self", ab);
+        var browser = this.iab.create('https://emmelev.dk/app/', "_self", ab);
         browser.show();
         browser.on('exit').subscribe(function () {
             navigator['app'].exitApp();

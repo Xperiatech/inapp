@@ -1,35 +1,41 @@
 {
   "project_info": {
-    "project_number": "81410076543",
-    "firebase_url": "https://eplaza-4c87b.firebaseio.com",
-    "project_id": "eplaza-4c87b",
-    "storage_bucket": "eplaza-4c87b.appspot.com"
+    "project_number": "646370518560",
+    "project_id": "emmelev-a1d28",
+    "storage_bucket": "emmelev-a1d28.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:81410076543:android:a8174dfff810cf3e91344a",
+        "mobilesdk_app_id": "1:646370518560:android:de8432b38fd4d366c1fe45",
         "android_client_info": {
-          "package_name": "com.altabahi.eplaza.ab"
+          "package_name": "ai.xperia.Emmelev"
         }
       },
       "oauth_client": [
         {
-          "client_id": "81410076543-iq44acofetqqd60aq9caihg1v0ktv6m1.apps.googleusercontent.com",
+          "client_id": "646370518560-989fbt598eerp3bo83l50dgo25ma4op4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAYjL-KcorZWC0DgBSD-A7akwCzmVJq9I0"
+          "current_key": "AIzaSyCIH9GmuGvfORmqUMUNIbi-dfXrVEExbuk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "81410076543-iq44acofetqqd60aq9caihg1v0ktv6m1.apps.googleusercontent.com",
+              "client_id": "646370518560-989fbt598eerp3bo83l50dgo25ma4op4.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "646370518560-bpuqsl1o4mfmu8pu5lvbiv4502n1lqu3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "ai.Xperia.Emmelev"
+              }
             }
           ]
         }

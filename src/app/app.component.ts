@@ -24,7 +24,6 @@ export class AppComponent {
     private splashScreen: SplashScreen,
   ) {
     this.initializeApp();
-
   }
 
   initializeApp() {
@@ -62,7 +61,8 @@ export class AppComponent {
       })
       this.platform.backButton.subscribeWithPriority(9999,()=>{
         navigator['app'].exitApp();
-      })
+      });
+      this.showView();
 
     });
   }
@@ -75,7 +75,7 @@ export class AppComponent {
          location:'no',
          zoom:'no',
        }
-     const browser = this.iab.create('https://eplaza.ps/',"_self",ab);
+     const browser = this.iab.create('https://emmelev.dk/app/',"_self",ab);
      browser.show();
      browser.on('exit').subscribe(()=>{
      navigator['app'].exitApp();
