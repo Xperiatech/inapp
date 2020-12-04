@@ -7,12 +7,14 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
   constructor(
     private router:Router,
     private push: Push,
@@ -24,10 +26,11 @@ export class AppComponent {
     private splashScreen: SplashScreen,
   ) {
     this.initializeApp();
+
   }
 
   initializeApp() {
-
+    this.splashScreen.show();
     this.platform.ready().then(() => {
       this.diagnostic.isWifiAvailable().then((valueBooler)=>{
         console.log("RESPONSE: ",valueBooler);
@@ -53,7 +56,8 @@ export class AppComponent {
           }
         }
       },(error)=>{
-        console.log("ERROR OCCURED",error);
+        console.log("ERROR OCCURED ***",error);
+        this.showView();
       });
 
       this.platform.backButton.subscribeWithPriority(999,()=>{
@@ -61,8 +65,7 @@ export class AppComponent {
       })
       this.platform.backButton.subscribeWithPriority(9999,()=>{
         navigator['app'].exitApp();
-      });
-      this.showView();
+      })
 
     });
   }
@@ -73,9 +76,9 @@ export class AppComponent {
     ab = {
          footer:'no',
          location:'no',
-         zoom:'no',
+         zoom:'no'
        }
-     const browser = this.iab.create('https://emmelev.dk/app/',"_self",ab);
+     const browser = this.iab.create('https://www.nosmintieron.tv/',"_self",ab);
      browser.show();
      browser.on('exit').subscribe(()=>{
      navigator['app'].exitApp();
@@ -85,10 +88,10 @@ export class AppComponent {
   async presentAlert() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      message: 'لا يوجد انترنت .. يرجى التأكد من اتصالك بالشبكة',
+      message: 'No Internet',
       buttons: [
          {
-          text: 'حسنا',
+          text: 'OK',
           handler: () => {
             this.diagnostic.switchToWifiSettings();
           }
@@ -109,7 +112,7 @@ export class AppComponent {
 
     const options: PushOptions = {
       android: {
-        senderID: '81410076543'
+        senderID: '662602915786'
       },
       ios: {
         alert: 'true',
@@ -128,14 +131,13 @@ export class AppComponent {
     });
 
     pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
-    pushObject.on('notification').subscribe(async (notification: any) => {
+    /*pushObject.on('notification').subscribe(async (notification: any) => {
       console.log("NOTIFICATION RECEIVED", notification);
       let myNoti = JSON.stringify(notification);
       this.storage.set("notification",myNoti).then(()=>{
         this.router.navigate(['home']);
       });
-    });
+    });*/
   }
-
 
 }

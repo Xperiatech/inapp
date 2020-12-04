@@ -58,6 +58,7 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
+        this.splashScreen.show();
         this.platform.ready().then(function () {
             _this.diagnostic.isWifiAvailable().then(function (valueBooler) {
                 console.log("RESPONSE: ", valueBooler);
@@ -86,7 +87,8 @@ var AppComponent = /** @class */ (function () {
                     }
                 }
             }, function (error) {
-                console.log("ERROR OCCURED", error);
+                console.log("ERROR OCCURED ***", error);
+                _this.showView();
             });
             _this.platform.backButton.subscribeWithPriority(999, function () {
                 navigator['app'].exitApp();
@@ -94,7 +96,6 @@ var AppComponent = /** @class */ (function () {
             _this.platform.backButton.subscribeWithPriority(9999, function () {
                 navigator['app'].exitApp();
             });
-            _this.showView();
         });
     };
     AppComponent.prototype.showView = function () {
@@ -104,7 +105,7 @@ var AppComponent = /** @class */ (function () {
             location: 'no',
             zoom: 'no'
         };
-        var browser = this.iab.create('https://emmelev.dk/app/', "_self", ab);
+        var browser = this.iab.create('https://www.nosmintieron.tv/', "_self", ab);
         browser.show();
         browser.on('exit').subscribe(function () {
             navigator['app'].exitApp();
@@ -118,10 +119,10 @@ var AppComponent = /** @class */ (function () {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.alertController.create({
                             cssClass: 'my-custom-class',
-                            message: 'لا يوجد انترنت .. يرجى التأكد من اتصالك بالشبكة',
+                            message: 'No Internet',
                             buttons: [
                                 {
-                                    text: 'حسنا',
+                                    text: 'OK',
                                     handler: function () {
                                         _this.diagnostic.switchToWifiSettings();
                                     }
@@ -146,7 +147,7 @@ var AppComponent = /** @class */ (function () {
         }
         var options = {
             android: {
-                senderID: '81410076543'
+                senderID: '662602915786'
             },
             ios: {
                 alert: 'true',
@@ -164,18 +165,13 @@ var AppComponent = /** @class */ (function () {
             });
         }); });
         pushObject.on('error').subscribe(function (error) { return alert('Error with Push plugin' + error); });
-        pushObject.on('notification').subscribe(function (notification) { return __awaiter(_this, void 0, void 0, function () {
-            var myNoti;
-            var _this = this;
-            return __generator(this, function (_a) {
-                console.log("NOTIFICATION RECEIVED", notification);
-                myNoti = JSON.stringify(notification);
-                this.storage.set("notification", myNoti).then(function () {
-                    _this.router.navigate(['home']);
-                });
-                return [2 /*return*/];
-            });
-        }); });
+        /*pushObject.on('notification').subscribe(async (notification: any) => {
+          console.log("NOTIFICATION RECEIVED", notification);
+          let myNoti = JSON.stringify(notification);
+          this.storage.set("notification",myNoti).then(()=>{
+            this.router.navigate(['home']);
+          });
+        });*/
     };
     AppComponent = __decorate([
         core_1.Component({
