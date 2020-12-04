@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { Push } from '@ionic-native/push/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { ThemeableBrowser  } from '@ionic-native/themeable-browser/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
      AppRoutingModule],
   providers: [
     StatusBar,
+    ThemeableBrowser,
     Push,
     InAppBrowser,
     Diagnostic,

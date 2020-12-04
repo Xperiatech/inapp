@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 @Component({
   selector: 'app-home',
@@ -31,6 +32,7 @@ export class HomePage {
   constructor(private iab: InAppBrowser,
     private storage: Storage,
     private push: Push,
+    private router:Router,
     private platform: Platform) {
   }
 
@@ -63,7 +65,7 @@ export class HomePage {
 
     const options: PushOptions = {
       android: {
-        senderID: '662602915786'
+        senderID: '646370518560'
       },
       ios: {
         alert: 'true',
@@ -82,13 +84,13 @@ export class HomePage {
     });
 
     pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
-    /*pushObject.on('notification').subscribe(async (notification: any) => {
+    pushObject.on('notification').subscribe(async (notification: any) => {
       console.log("NOTIFICATION RECEIVED", notification);
       let myNoti = JSON.stringify(notification);
       this.storage.set("notification",myNoti).then(()=>{
         this.router.navigate(['home']);
       });
-    });*/
+    });
   }
 
 }

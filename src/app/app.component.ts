@@ -7,6 +7,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Router } from '@angular/router';
+import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser/ngx';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +16,69 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+
+  options: ThemeableBrowserOptions = {
+    statusbar: {
+
+        color: '#ffffffff'
+    },
+    toolbar: {
+        height: 40,
+        color: '#f0f0f0ff'
+    },
+    title: {
+        color: '#003264ff',
+        showPageTitle: false
+    },
+    backButton: {
+        image: 'back',
+        imagePressed: 'back_pressed',
+        align: 'left',
+        event: 'backPressed'
+    },
+    forwardButton: {
+        image: 'forward',
+        imagePressed: 'forward_pressed',
+        align: 'left',
+        event: 'forwardPressed'
+    },
+    closeButton: {
+        image: 'close',
+        imagePressed: 'close_pressed',
+        align: 'left',
+        event: 'closePressed'
+    },
+    customButtons: [
+        {
+            image: 'share',
+            imagePressed: 'share_pressed',
+            align: 'right',
+            event: 'sharePressed'
+        }
+    ],
+    menu: {
+        image: 'menu',
+        imagePressed: 'menu_pressed',
+        title: 'Test',
+        cancel: 'Cancel',
+        align: 'right',
+        items: [
+            {
+                event: 'helloPressed',
+                label: 'Hello World!'
+            },
+            {
+                event: 'testPressed',
+                label: 'Test!'
+            }
+        ]
+    },
+    backButtonCanClose: true
+};
+
   constructor(
     private router:Router,
+    private themeableBrowser: ThemeableBrowser,
     private push: Push,
     private storage: Storage,
     public alertController: AlertController,
@@ -57,6 +119,7 @@ export class AppComponent {
         }
       },(error)=>{
         console.log("ERROR OCCURED ***",error);
+        this.initPushNotification();
         this.showView();
       });
 
@@ -78,11 +141,16 @@ export class AppComponent {
          location:'no',
          zoom:'no'
        }
-     const browser = this.iab.create('https://www.nosmintieron.tv/',"_self",ab);
-     browser.show();
+     //const browser = this.iab.create('https://emmelev.dk/app/',"_self",ab);
+     const browser = this.themeableBrowser.create('https://emmelev.dk/app/', '_self', this.options);
+    // browser.show();
+   /*  browser.on('loadstart').subscribe((event)=>{
+      console.log("LOADING...");
+     });
+
      browser.on('exit').subscribe(()=>{
      navigator['app'].exitApp();
-     })
+     })*/
   }
 
   async presentAlert() {
@@ -131,13 +199,13 @@ export class AppComponent {
     });
 
     pushObject.on('error').subscribe(error => alert('Error with Push plugin' + error));
-    /*pushObject.on('notification').subscribe(async (notification: any) => {
+    pushObject.on('notification').subscribe(async (notification: any) => {
       console.log("NOTIFICATION RECEIVED", notification);
       let myNoti = JSON.stringify(notification);
       this.storage.set("notification",myNoti).then(()=>{
         this.router.navigate(['home']);
       });
-    });*/
+    });
   }
 
 }

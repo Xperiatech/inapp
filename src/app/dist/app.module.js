@@ -19,6 +19,7 @@ var app_component_1 = require("./app.component");
 var app_routing_module_1 = require("./app-routing.module");
 var ngx_5 = require("@ionic-native/push/ngx");
 var storage_1 = require("@ionic/storage");
+var ngx_6 = require("@ionic-native/themeable-browser/ngx");
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -31,6 +32,7 @@ var AppModule = /** @class */ (function () {
                 app_routing_module_1.AppRoutingModule],
             providers: [
                 ngx_3.StatusBar,
+                ngx_6.ThemeableBrowser,
                 ngx_5.Push,
                 ngx_4.InAppBrowser,
                 ngx_1.Diagnostic,

@@ -45,10 +45,11 @@ exports.__esModule = true;
 exports.HomePage = void 0;
 var core_1 = require("@angular/core");
 var HomePage = /** @class */ (function () {
-    function HomePage(iab, storage, push, platform) {
+    function HomePage(iab, storage, push, router, platform) {
         this.iab = iab;
         this.storage = storage;
         this.push = push;
+        this.router = router;
         this.platform = platform;
     }
     HomePage.prototype.ngOnInit = function () {
@@ -93,7 +94,7 @@ var HomePage = /** @class */ (function () {
         }
         var options = {
             android: {
-                senderID: '662602915786'
+                senderID: '646370518560'
             },
             ios: {
                 alert: 'true',
@@ -111,13 +112,18 @@ var HomePage = /** @class */ (function () {
             });
         }); });
         pushObject.on('error').subscribe(function (error) { return alert('Error with Push plugin' + error); });
-        /*pushObject.on('notification').subscribe(async (notification: any) => {
-          console.log("NOTIFICATION RECEIVED", notification);
-          let myNoti = JSON.stringify(notification);
-          this.storage.set("notification",myNoti).then(()=>{
-            this.router.navigate(['home']);
-          });
-        });*/
+        pushObject.on('notification').subscribe(function (notification) { return __awaiter(_this, void 0, void 0, function () {
+            var myNoti;
+            var _this = this;
+            return __generator(this, function (_a) {
+                console.log("NOTIFICATION RECEIVED", notification);
+                myNoti = JSON.stringify(notification);
+                this.storage.set("notification", myNoti).then(function () {
+                    _this.router.navigate(['home']);
+                });
+                return [2 /*return*/];
+            });
+        }); });
     };
     HomePage = __decorate([
         core_1.Component({
