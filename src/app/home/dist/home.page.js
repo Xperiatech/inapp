@@ -37,11 +37,11 @@ var HomePage = /** @class */ (function () {
             location: 'no',
             zoom: 'no'
         };
-        var browser = this.iab.create(this.url, "_self", ab);
-        browser.show();
-        browser.on('exit').subscribe(function () {
-            navigator['app'].exitApp();
-        });
+        //const browser = this.iab.create(this.url,"_self",ab);
+        //browser.show();
+        /*browser.on('exit').subscribe(()=>{
+          navigator['app'].exitApp();
+        });*/
     };
     HomePage = __decorate([
         core_1.Component({

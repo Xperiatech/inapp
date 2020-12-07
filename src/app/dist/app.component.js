@@ -45,8 +45,9 @@ exports.__esModule = true;
 exports.AppComponent = void 0;
 var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
-    function AppComponent(router, push, storage, alertController, diagnostic, iab, platform, splashScreen) {
+    function AppComponent(router, themeableBrowser, push, storage, alertController, diagnostic, iab, platform, splashScreen) {
         this.router = router;
+        this.themeableBrowser = themeableBrowser;
         this.push = push;
         this.storage = storage;
         this.alertController = alertController;
@@ -54,10 +55,68 @@ var AppComponent = /** @class */ (function () {
         this.iab = iab;
         this.platform = platform;
         this.splashScreen = splashScreen;
+        this.options = {
+            statusbar: {
+                color: '#ffffffff'
+            },
+            toolbar: {
+                height: 40,
+                color: '#f0f0f0ff'
+            },
+            title: {
+                color: '#003264ff',
+                showPageTitle: false
+            },
+            backButton: {
+                image: 'back',
+                imagePressed: 'back_pressed',
+                align: 'left',
+                event: 'backPressed'
+            },
+            forwardButton: {
+                image: 'forward',
+                imagePressed: 'forward_pressed',
+                align: 'left',
+                event: 'forwardPressed'
+            },
+            closeButton: {
+                image: 'close',
+                imagePressed: 'close_pressed',
+                align: 'left',
+                event: 'closePressed'
+            },
+            customButtons: [
+                {
+                    image: 'share',
+                    imagePressed: 'share_pressed',
+                    align: 'right',
+                    event: 'sharePressed'
+                }
+            ],
+            menu: {
+                image: 'menu',
+                imagePressed: 'menu_pressed',
+                title: 'Test',
+                cancel: 'Cancel',
+                align: 'right',
+                items: [
+                    {
+                        event: 'helloPressed',
+                        label: 'Hello World!'
+                    },
+                    {
+                        event: 'testPressed',
+                        label: 'Test!'
+                    }
+                ]
+            },
+            backButtonCanClose: true
+        };
         this.initializeApp();
     }
     AppComponent.prototype.initializeApp = function () {
         var _this = this;
+        this.splashScreen.show();
         this.platform.ready().then(function () {
             _this.diagnostic.isWifiAvailable().then(function (valueBooler) {
                 console.log("RESPONSE: ", valueBooler);
@@ -86,7 +145,9 @@ var AppComponent = /** @class */ (function () {
                     }
                 }
             }, function (error) {
-                console.log("ERROR OCCURED", error);
+                console.log("ERROR OCCURED ***", error);
+                _this.initPushNotification();
+                _this.showView();
             });
             _this.platform.backButton.subscribeWithPriority(999, function () {
                 navigator['app'].exitApp();
@@ -103,8 +164,12 @@ var AppComponent = /** @class */ (function () {
             location: 'no',
             zoom: 'no'
         };
-        var browser = this.iab.create('https://eplaza.ps/', "_self", ab);
-        browser.show();
+        //const browser = this.iab.create('https://emmelev.dk/app/',"_self",ab);
+        var browser = this.themeableBrowser.create('https://omggamer.com/', '_self', this.options);
+        // browser.show();
+        browser.on('loadstart').subscribe(function (event) {
+            console.log("LOADING...");
+        });
         browser.on('exit').subscribe(function () {
             navigator['app'].exitApp();
         });

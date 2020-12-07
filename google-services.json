@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "81410076543",
-    "firebase_url": "https://eplaza-4c87b.firebaseio.com",
-    "project_id": "eplaza-4c87b",
-    "storage_bucket": "eplaza-4c87b.appspot.com"
+    "project_number": "16663450020",
+    "project_id": "omgame-44cc7",
+    "storage_bucket": "omgame-44cc7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:81410076543:android:a8174dfff810cf3e91344a",
+        "mobilesdk_app_id": "1:16663450020:android:bf1ab41fc2526ddcff3131",
         "android_client_info": {
-          "package_name": "com.altabahi.eplaza.ab"
+          "package_name": "com.altabahi.omggamer.ab"
         }
       },
       "oauth_client": [
         {
-          "client_id": "81410076543-iq44acofetqqd60aq9caihg1v0ktv6m1.apps.googleusercontent.com",
+          "client_id": "16663450020-fkc25i6m06v0g97g7mr2rvrvs1quigl7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAYjL-KcorZWC0DgBSD-A7akwCzmVJq9I0"
+          "current_key": "AIzaSyBw_W0DCIlZEOb-vlZKlX7vWo7eQmYA_3Q"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "81410076543-iq44acofetqqd60aq9caihg1v0ktv6m1.apps.googleusercontent.com",
+              "client_id": "16663450020-fkc25i6m06v0g97g7mr2rvrvs1quigl7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -7,14 +7,79 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 import { Storage } from '@ionic/storage';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { Router } from '@angular/router';
+import { ThemeableBrowser, ThemeableBrowserOptions, ThemeableBrowserObject } from '@ionic-native/themeable-browser/ngx';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+
+
+  options: ThemeableBrowserOptions = {
+
+    statusbar: {
+        color: '#ffffffff'
+    },
+    toolbar: {
+        height: 40,
+        color: '#f0f0f0ff'
+    },
+    title: {
+        color: '#003264ff',
+        showPageTitle: false
+    },
+    backButton: {
+        image: 'back',
+        imagePressed: 'back_pressed',
+        align: 'left',
+        event: 'backPressed'
+    },
+    forwardButton: {
+        image: 'forward',
+        imagePressed: 'forward_pressed',
+        align: 'left',
+        event: 'forwardPressed'
+    },
+    closeButton: {
+        image: 'close',
+        imagePressed: 'close_pressed',
+        align: 'left',
+        event: 'closePressed'
+    },
+    customButtons: [
+        {
+            image: 'share',
+            imagePressed: 'share_pressed',
+            align: 'right',
+            event: 'sharePressed'
+        }
+    ],
+
+    menu: {
+        image: 'menu',
+        imagePressed: 'menu_pressed',
+        title: 'Test',
+        cancel: 'Cancel',
+        align: 'right',
+        items: [
+            {
+                event: 'helloPressed',
+                label: 'Hello World!'
+            },
+            {
+                event: 'testPressed',
+                label: 'Test!'
+            }
+        ]
+    },
+    backButtonCanClose: true
+};
+
   constructor(
     private router:Router,
+    private themeableBrowser: ThemeableBrowser,
     private push: Push,
     private storage: Storage,
     public alertController: AlertController,
@@ -28,7 +93,7 @@ export class AppComponent {
   }
 
   initializeApp() {
-
+    this.splashScreen.show();
     this.platform.ready().then(() => {
       this.diagnostic.isWifiAvailable().then((valueBooler)=>{
         console.log("RESPONSE: ",valueBooler);
@@ -54,7 +119,9 @@ export class AppComponent {
           }
         }
       },(error)=>{
-        console.log("ERROR OCCURED",error);
+        console.log("ERROR OCCURED ***",error);
+        this.initPushNotification();
+        this.showView();
       });
 
       this.platform.backButton.subscribeWithPriority(999,()=>{
@@ -73,14 +140,20 @@ export class AppComponent {
     ab = {
          footer:'no',
          location:'no',
-         zoom:'no',
+         zoom:'no'
        }
-     const browser = this.iab.create('https://eplaza.ps/',"_self",ab);
-     browser.show();
+     //const browser = this.iab.create('https://emmelev.dk/app/',"_self",ab);
+     const browser = this.themeableBrowser.create('https://omggamer.com/', '_self', this.options);
+    // browser.show();
+     browser.on('loadstart').subscribe((event)=>{
+      console.log("LOADING...");
+     });
+
      browser.on('exit').subscribe(()=>{
      navigator['app'].exitApp();
      })
   }
+
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -99,6 +172,7 @@ export class AppComponent {
 
     await alert.present();
   }
+
 
   initPushNotification(){
 
@@ -136,6 +210,5 @@ export class AppComponent {
       });
     });
   }
-
 
 }

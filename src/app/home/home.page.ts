@@ -40,11 +40,11 @@ export class HomePage {
       location:'no',
       zoom:'no',
     }
-  const browser = this.iab.create(this.url,"_self",ab);
-  browser.show();
-  browser.on('exit').subscribe(()=>{
+  //const browser = this.iab.create(this.url,"_self",ab);
+  //browser.show();
+  /*browser.on('exit').subscribe(()=>{
     navigator['app'].exitApp();
-  });
+  });*/
   }
 
 }
